@@ -650,7 +650,7 @@ class JavaScriptDependency(Dependency):
     def _extract(self, replace_list=None):
         with TemporaryDirectory() as temporary_directory:
             path_compressed_file = self.get_tar_file_path()
-            path_temporary = Path(temporary_directory)
+            path_temporary = Path(temporary_directory).resolve()
 
             with path_compressed_file.open(mode='rb') as file_object:
                 archive = TarArchive.open(file_object=file_object)
